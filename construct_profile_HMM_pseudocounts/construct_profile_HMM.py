@@ -32,6 +32,9 @@ def profile_HMM_pseudocounts(
     from_to: list[list[int]] = [[0] * 4 for __ in range(3)]
 
     for i in range(len(patterns[0])):
+        # perhaps count nodes can be done in background for all i.
+        # The background then cals count nodes with curr_states i - 1 as prev states.
+        # all counters and curr_states should be kept increasing the memory requirements, especially for large patterns
         counter, curr_states = count_nodes(patterns, from_to, prev_states, i, len_patterns)
 
         ######################
